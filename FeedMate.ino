@@ -34,7 +34,7 @@ void setup(){
   Serial.println(ssid);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);0
+    delay(500);
     Serial.print(".");
   }
   Serial.println("");
@@ -42,7 +42,7 @@ void setup(){
   
   // Init and get the time
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-  printLocalTime();
+  //printLocalTime();
 
 }
 
