@@ -15,11 +15,12 @@ void loop() {
   float h = dht.readHumidity();     // Lese Luftfeuchtigkeit
   float t = dht.readTemperature();  // Lese Temperatur (Celsius)
   
-  //if (isnan(h) || isnan(t)) { // Prüfe, ob die Messung erfolgreich war
-  //  Serial.println("Fehler beim Lesen vom DHT-Sensor!");
-  //return;
-  //}
+  if (isnan(h) || isnan(t)) { // Prüfe, ob die Messung erfolgreich war
+    Serial.println("Fehler beim Lesen vom DHT-Sensor!");
+  return;
+  }
 
+  //Display the Values
   Serial.print("Luftfeuchtigkeit: ");
   Serial.print(h);
   Serial.print(" %\t");
