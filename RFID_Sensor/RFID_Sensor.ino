@@ -14,9 +14,13 @@ void setup() {
   Serial.println("Booted");
   SPI.begin(); // Start SPI connection
   RFID.PCD_Init(); // Initslise RFID Scanner
+
 }
 
 void loop() {
+  long code = 0; // variable for saving the UID
+  long code1 = 0; // variable for saving the UID1
+  
   // check if a RFID Card is present, if not repeat
   if (!RFID.PICC_IsNewCardPresent()){
     Serial.println("card not found");
@@ -35,6 +39,12 @@ void loop() {
   for (byte i = 0; i < RFID.uid.size; i++) {
     Serial.print(RFID.uid.uidByte[i], HEX); //Read the UID, which is in seperated in 4 blocks, and send block on postion i them to the Serial Terminal as HEX
     Serial.print(" "); //Block seperator
+    code = ((code+RFID.uid.uidByte[i])*10); //read the block in position i, add it to code varible and strech it by factor 10
+    code1 = ((code+RFID.uid.uidByte[i])); //read the block in position i, add it to code varible 
   }
   Serial.println(); // line Seperator
+  
+  //print the code variables
+  Serial.println(code);
+  Serial.println(code1);
 }
