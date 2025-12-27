@@ -1,12 +1,13 @@
 // Declare LED Pins
-int red_led_pin = 3;
-int yellow_led_pin = 7;
-int green_led_pin= 6;
+int red_led_pin = 15;
+int yellow_led_pin = 16;
+int green_led_pin= 17;
 
 // Declare Ultraschall Pins & Varibles
 int trigger_pin = 5;
 int echo_pin = 4;
 
+// Declare Variables for distance Calculation
 long dauer = 0;
 long entfernung = 0;
 
@@ -50,17 +51,17 @@ void pulse() {
 }
 
 void changeLight() {  //change light based on the distance
-  if(entfernung < 5) {
+  if(entfernung > 11) {
     allLightsOff();
     digitalWrite(red_led_pin, HIGH);
     Serial.println("Red Light");
   }
-  if(entfernung > 5 && entfernung < 10){
+  if(entfernung > 5 && entfernung < 11){
     allLightsOff();
     digitalWrite(yellow_led_pin, HIGH);
     Serial.println("Yellow Light");
   }
-  if(entfernung > 10) {
+  if(entfernung < 5) {
     allLightsOff();
     digitalWrite(green_led_pin, HIGH);
     Serial.println("Green Light");
