@@ -1,7 +1,7 @@
 // Declare LED Pins
-int red_led_pin = 12; 
-int yellow_led_pin = 11; 
-int green_led_pin= 10;  
+int red_led_pin = 3;
+int yellow_led_pin = 7;
+int green_led_pin= 6;
 
 // Declare Ultraschall Pins & Varibles
 int trigger_pin = 5;

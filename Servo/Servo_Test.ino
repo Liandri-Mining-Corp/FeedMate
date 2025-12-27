@@ -1,7 +1,7 @@
 #include <ESP32Servo.h> //This Libery contains the everything to control the Servo
 Servo myservo; //Create a Servo object
 
-int servopin = 32; //declare the Pin where the Servo is
+int servopin = 9; //declare the Pin where the Servo is
 
 void setup() {
   Serial.begin(115200); //Start Serial output

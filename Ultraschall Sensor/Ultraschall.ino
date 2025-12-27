@@ -1,6 +1,6 @@
 // Declare Ultraschall Pins & Varibles
-int trigger_pin = 27;
-int echo_pin = 14;
+int trigger_pin = 5;
+int echo_pin = 4;
 
 long dauer = 0;
 long entfernung = 0;
