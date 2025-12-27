@@ -4,17 +4,26 @@
 
 // Define RFID-Reader pin
 #define SS_PIN 10 // SDA Pin
-#define RST_PIN 9 // RST Pin
+#define RST_PIN 14 // RST Pin
+
+//Servo part as defined in Servo_Test.ino and adjustet for this Test
+#include <ESP32Servo.h> //This Libery contains the everything to control the Servo
+Servo myservo; //Create a Servo object
+
+int servopin = 2; //declare the Pin where the Servo is
 
 // Create a MFRC522 Object as the RFID Scanner with SDA Pin and RST Pin as Paremetar
 MFRC522 RFID(SS_PIN, RST_PIN);
 
+bool service_hatch_state = false; // this Variable save the state of the service hatch which is by default closed (false = closed, true = open)
+
 void setup() {
   Serial.begin(115200); // Start Serial output in Monitor
-  Serial.println("Booted");
   SPI.begin(); // Start SPI connection
   RFID.PCD_Init(); // Initslise RFID Scanner
-
+  myservo.attach(servopin); // attach the Servo pin with the Servo Object
+  myservo.write(0);
+  Serial.println("Booted");
 }
 
 void loop() {
@@ -23,7 +32,7 @@ void loop() {
   
   // check if a RFID Card is present, if not repeat
   if (!RFID.PICC_IsNewCardPresent()){
-    Serial.println("card not found");
+    //Serial.println("card not found");
     return;
   }
 
@@ -47,4 +56,20 @@ void loop() {
   //print the code variables
   Serial.println(code);
   Serial.println(code1);
+  Serial.print("Service Hatch State: ");
+  Serial.print(service_hatch_state);
+  Serial.println(); // line Seperator
+
+  if (code == 1435580) {
+    if (service_hatch_state == false) {
+      myservo.write(90);
+      service_hatch_state = true;
+      Serial.println("Service Hatch OPENED");
+    } else {
+      myservo.write(0);
+      service_hatch_state = false;
+      Serial.println("Service Hatch CLOSED");
+    }
+  }
+  delay(1500);  // Prevent rapid retriggering
 }
