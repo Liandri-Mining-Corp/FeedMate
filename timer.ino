@@ -36,3 +36,12 @@ bool isTime(int targetH, int targetM, int targetS) {
 
     return false;
 }
+
+String getTimeString() {
+    struct tm timeinfo;
+    if (!getLocalTime(&timeinfo)) return "00:00";
+
+    char buffer[6];
+    sprintf(buffer, "%02d:%02d", timeinfo.tm_hour, timeinfo.tm_min);
+    return String(buffer);
+}

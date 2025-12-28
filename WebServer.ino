@@ -13,6 +13,7 @@ int getLastLED();           // 0 = Red, 1 = Yellow, 2 = Green
 float getTemperature();
 float getHumidity();
 bool getServiceHatchState();
+String getTimeString();
 
 // Convert food level to colored text
 String foodLevelText(int level) {
@@ -35,9 +36,11 @@ String generateHTML() {
   float temp = getTemperature();
   float moist = getHumidity();
   bool hatch = getServiceHatchState();
+  String time = getTimeString();
 
   String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta http-equiv='refresh' content='5'><title>LMC FeederMate</title></head><body>";
   html += "<h1>FeederMate</h1>";
+  html += "<p><b>Time:</b> " + time + "</p>";
   html += "<p><b>Food Level:</b> " + foodLevelText(food) + "</p>";
   html += "<p><b>Temperature:</b> " + String(temp, 1) + " °C</p>";
   html += "<p><b>Moisture:</b> " + String(moist, 1) + " %</p>";
