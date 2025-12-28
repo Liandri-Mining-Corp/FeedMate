@@ -7,6 +7,9 @@ const int GREEN_LED_PIN  = 17;
 const int FAR_DISTANCE_CM    = 11;
 const int MEDIUM_DISTANCE_CM = 5;
 
+// Last LED State
+int LAST_LED = 0; // 0 = Red, 1 = Yellow, 2 = Green
+
 // Initialize LEDs
 void ledControllerInit() {
     pinMode(RED_LED_PIN, OUTPUT);
@@ -24,13 +27,22 @@ void updateLedByDistance(long distance_cm) {
 
     if (distance_cm > FAR_DISTANCE_CM) {
         digitalWrite(RED_LED_PIN, HIGH);
+        LAST_LED = 0;
     }
     else if (distance_cm > MEDIUM_DISTANCE_CM) {
         digitalWrite(YELLOW_LED_PIN, HIGH);
+        LAST_LED = 1;
     }
     else {
         digitalWrite(GREEN_LED_PIN, HIGH);
+        LAST_LED = 2;
     }
+}
+
+// get last LED State
+int getLastLED()
+{
+    return LAST_LED;
 }
 
 // turn off all LEDs
