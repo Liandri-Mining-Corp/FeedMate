@@ -46,6 +46,10 @@ String generateHTML() {
   html += "<p><b>Moisture:</b> " + String(moist, 1) + " %</p>";
   html += "<p><b>Service Hatch:</b> " + serviceHatchText(hatch) + "</p>";
   html += "</body></html>";
+
+  clearDisplay();
+  writeLine1("Moist:"+String(moist, 1) + "%");
+  writeLine2("Temp:"+String(temp, 1) + "°C");
   return html;
 }
 
@@ -54,7 +58,7 @@ void handleRoot() {
 }
 
 void webServerInit() {
-  //Serial.begin(115200);
+  writeLine1("Connecting");
 
   WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi");
@@ -68,6 +72,7 @@ void webServerInit() {
 
   server.on("/", handleRoot);
   server.begin();
+  writeLine1("Connected!");
 }
 
 void webServerLoop() {
