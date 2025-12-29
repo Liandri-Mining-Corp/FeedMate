@@ -85,10 +85,10 @@ void runFeedingCycle() {
 
     // Toggle feeder position to release food
     if (getFeederPOS() == 0) {
-      setFeederPosition1();
+      setfeederPosition1();
       delay(4000); // Allow feeder to complete movement
     } else {
-      setFeederPosition0();
+      setfeederPosition0();
       delay(4000); // Allow feeder to complete movement
     }
   }
