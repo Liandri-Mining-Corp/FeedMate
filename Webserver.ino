@@ -54,7 +54,7 @@ String generateStatusPageHtml() {
   // Update Display
   clearDisplay();
   writeLine1("Moist:" + String(humidity, 1) + "%");
-  writeLine2("Temp:" + String(temperature, 1) + "°C");
+  writeLine2("Temp:" + String(temperature, 1) + " C");
 
   return html;
 }
