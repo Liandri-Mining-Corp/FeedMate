@@ -1,6 +1,6 @@
 # FeedMate
 
-**FeedMate** is ESP32 firmware for controlling an automatic food dispenser.  
+**FeedMate** is ESP32S3 firmware for controlling an automatic food dispenser.  
 This repository contains Arduino-compatible sketches that enable Wi-Fi control, sensor integration, display support, and actuation of the feeder mechanism.
 
 > **Please note:** This project was created as a **school project** and is **not intended for production or general use**.  
@@ -12,7 +12,7 @@ This repository contains Arduino-compatible sketches that enable Wi-Fi control, 
 
 ## 🚀 Overview
 
-FeedMate provides core firmware to operate an ESP32-based food dispenser. The ESP32 runs web server functionality and controls the following subsystems:
+FeedMate provides core firmware to operate an ESP32S3-based food dispenser. The ESP32S3 runs web server functionality and controls the following subsystems:
 
 - Servo motor for dispensing food  
 - Ultrasonic sensor to detect whether sufficient food is loaded  
@@ -56,9 +56,9 @@ FeedMate provides core firmware to operate an ESP32-based food dispenser. The ES
 Before building and uploading, make sure you have:
 
 - **Arduino IDE** installed  
-- **ESP32 board support** configured in the Arduino IDE Boards Manager  
-- Latest **ESP32 libraries and dependencies**  
-- Hardware assembled with the ESP32 connected to:
+- **ESP32S3 board support** configured in the Arduino IDE Boards Manager  
+- Latest **ESP32S3 libraries and dependencies**  
+- Hardware assembled with the ESP32S3 connected to:
   - Servo motor  
   - Ultrasonic sensor  
   - Display  
@@ -73,12 +73,12 @@ Before building and uploading, make sure you have:
    git clone https://github.com/Liandri-Mining-Corp/FeedMate.git
 2. Open FeedMate.ino in the Arduino IDE.
 
-3. Install the required libraries (ESP32 Wi-Fi, WebServer, Servo, display libraries, etc.).
+3. Install the required libraries (Wi-Fi, WebServer, Servo, display libraries, etc.).
 
 4. Configure your Wi-Fi credentials in the code.
 
-5. Select your ESP32 board and the correct COM port.
+5. Select your ESP32S3 board and the correct COM port.
 
-6. Upload the firmware to your ESP32.
+6. Upload the firmware to your ESP32S3.
 
 (Optional) Power-cycle the board and connect it to the configured Wi-Fi network.
